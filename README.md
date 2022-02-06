@@ -27,17 +27,17 @@ A vizsgafeladat során a vizsgázó gyakorlati bemutatóval összekapcsolt szób
 A fentieken túl maximum 3-5 perces angol nyelven tartott szóbeli előadás formájában összefoglalót ad a szoftver céljáról és működéséről, valamint angolul válaszol a vizsgáztató végfelhasználói szerepben feltett maximum 2-3 kérdésére. A vizsgaremek bemutatására és megvédésére maximum 30 perc áll a vizsgázó rendelkezésére.
 
 A vizsgatevékenység értékelése:
-Szempont	                                                                        pontszám
- - a szoftver átfogó értékelése (a választott téma életszerűsége, az elkészült szoftver hasznossága, a komplexitás és kidolgozottság mértéke, milyen mértékben és minőségben valósította meg a szoftver a kitűzött célt, felhasználói élmény minősége)	                                         5 pont
- - adatbázis-tervezés és megvalósítás	                                                                              5 pont
- - szerver oldali komponens (backend)	                                                                             10 pont
- - asztali használatra készült kliens oldali komponens (frontend)	                                                 10 pont
- - mobil használatra készült kliens oldali komponens	                                                             10 pont
- - a kód minősége                                                                                                   3 pont
- - a dokumentáció minősége és részletezettsége	                                                                    2 pont
- - a szoftver tesztelésének bemutatása	                                                                            3 pont
- - a szoftver bemutatása során a vizsgázó előadásának szakszerűsége, illetve az angol nyelvű kommunikáció minősége	3 pont
- - a csapatmunka megvalósítása	                                                                                    4 pont
+Szempont	                                                            pontszám
+ - a szoftver átfogó értékelése (a választott téma életszerűsége, az elkészült szoftver hasznossága, a komplexitás és kidolgozottság mértéke, milyen mértékben és minőségben valósította meg a szoftver a kitűzött célt, felhasználói élmény minősége) /5 pont/
+ - adatbázis-tervezés és megvalósítás /5 pont/
+ - szerver oldali komponens (backend) /10 pont/
+ - asztali használatra készült kliens oldali komponens (frontend) /10 pont/
+ - mobil használatra készült kliens oldali komponens /10 pont/
+ - a kód minősége /3 pont/
+ - a dokumentáció minősége és részletezettsége /2 pont/
+ - a szoftver tesztelésének bemutatása /3 pont/
+ - a szoftver bemutatása során a vizsgázó előadásának szakszerűsége, illetve az angol nyelvű kommunikáció minősége	/3 pont/
+ - a csapatmunka megvalósítása /4 pont/
 
 Milyen témát célszerű kitalálni?
 Ha tanácstalan a témaválasztással kapcsolatban, vagy csak szeretne tájékozódni a szempontokról, érdemes lehet beleolvasnia a Záródolgozat című oldalba. Ez ugyan még a régi OKJ elvárásaira szabottak, de egyrészt sok tekintetben gondolatébresztő lehet, másrészt meglehetősen sok átfedés lelhető fel a régi és az új rendszer között.
@@ -52,12 +52,12 @@ A vizsgafeladat során a vizsgázónak egy számítógépes szoftverfejlesztési
       - Frontend programozást (HTML / CSS /JavaScript / REST API kliens)
 
 A vizsgatevékenység értékelése:
-Szempont	                                                                                                              pontszám
- - konzolos asztali alkalmazásfejlesztés Java vagy C# nyelven	                                                          15 pont
- - grafikus asztali alkalmazásfejlesztés Java vagy C# nyelven	                                                          10 pont
- - reszponzív viselkedésű weboldal készítés és formázás	                                                                10 pont
- - backend programozás (adatbázis lekérdezést is végző, néhány végpontot tartalmazó REST API kiszolgáló létrehozása)	  15 pont
- - frontend programozás (HTML / CSS /JavaScript / REST API kliens)	                                                    15 pont
+Szempont	                                                     pontszám
+ - konzolos asztali alkalmazásfejlesztés Java vagy C# nyelven /15 pont/
+ - grafikus asztali alkalmazásfejlesztés Java vagy C# nyelven /10 pont/
+ - reszponzív viselkedésű weboldal készítés és formázás	/10 pont/
+ - backend programozás (adatbázis lekérdezést is végző, néhány végpontot tartalmazó REST API kiszolgáló létrehozása) /15 pont/
+ - frontend programozás (HTML / CSS /JavaScript / REST API kliens) /15 pont/
 
 Milyen feladatok jöhetnek itt szóba?
-Ha kíváncsi rá, milyen jellegű feladatok szoktak szerepelni a gyakorlati tevékenységet igénylő vizsgarészeken, nézzen szét a Gyakorlati vizsga című oldalon!
+Ha kíváncsi rá, milyen jellegű feladatok szoktak szerepelni a gyakorlati tevékenységet igénylő vizsgarészeken, nézze6n szét a Gyakorlati vizsga című oldalon!
