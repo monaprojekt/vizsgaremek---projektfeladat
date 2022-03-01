@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Már 01. 20:36
+-- Létrehozás ideje: 2022. Már 01. 22:59
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.11
 
@@ -48,7 +48,7 @@ CREATE TABLE `alkalmazott` (
   `alk_regido` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Alkalmazott regisztrációjának ideje.',
   `alk_s` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Alkalmazotti státusz: fizetés nélkülin, táppénzen...',
   `alk_ki` tinyint(1) NOT NULL COMMENT 'Kilépett alkalmazott.',
-  `alk_mj` int(11) NOT NULL COMMENT 'Egyéb megjegyzések, commentek.'
+  `alk_mj` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Egyéb megjegyzések, commentek.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -74,7 +74,19 @@ CREATE TABLE `beki` (
 
 DROP TABLE IF EXISTS `gjarmu`;
 CREATE TABLE `gjarmu` (
-  `g_tip` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű típusa.',
+  `g_rsz` varchar(20) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű rendszáma.',
+  `g_tip` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű típusa.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `gjarmu_km`
+--
+
+DROP TABLE IF EXISTS `gjarmu_km`;
+CREATE TABLE `gjarmu_km` (
+  `g_ID` int(255) NOT NULL COMMENT 'Gépjármű belépési azonosító.',
   `g_rsz` varchar(20) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű rendszáma.',
   `g_km_0` int(255) NOT NULL COMMENT 'Céges gépjármű km-óra állása felvételkor.',
   `g_km_1` int(255) NOT NULL COMMENT 'Céges gépjármű km-óra állása leadáskor.',
@@ -175,6 +187,12 @@ ALTER TABLE `beki`
 --
 ALTER TABLE `gjarmu`
   ADD PRIMARY KEY (`g_rsz`);
+
+--
+-- A tábla indexei `gjarmu_km`
+--
+ALTER TABLE `gjarmu_km`
+  ADD PRIMARY KEY (`g_ID`);
 
 --
 -- A tábla indexei `kulcsfel`
