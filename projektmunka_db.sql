@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Már 01. 22:59
+-- Létrehozás ideje: 2022. Már 02. 09:15
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.11
 
@@ -75,7 +75,8 @@ CREATE TABLE `beki` (
 DROP TABLE IF EXISTS `gjarmu`;
 CREATE TABLE `gjarmu` (
   `g_rsz` varchar(20) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű rendszáma.',
-  `g_tip` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű típusa.'
+  `g_tip` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű típusa.',
+  `g_mj` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű megjegyzések, pl. szervízben van...'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -117,7 +118,8 @@ DROP TABLE IF EXISTS `kulcsok`;
 CREATE TABLE `kulcsok` (
   `k_ID` int(50) NOT NULL COMMENT 'Kulcsaznosító.',
   `th_nev` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Telephely neve.',
-  `k_leir` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Kulcs megnevezése, minek a kulcsa? Műhely, raktár...'
+  `k_leir` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Kulcs megnevezése, minek a kulcsa? Műhely, raktár...',
+  `k_mj` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Kulccsal kapcsolatos megjegyzések, pl. elveszett, 3 példányos...'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -132,7 +134,8 @@ CREATE TABLE `kulsos` (
   `kls_sznev` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Külsős szervezet neve.',
   `kls_rsz` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Külsős szervezeti gépjármű rendszáma.',
   `kls_be` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Külsős szervezeti gépjármű belépés.',
-  `kls_ki` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Külsős szervezeti gépjármű kilépés.'
+  `kls_ki` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Külsős szervezeti gépjármű kilépés.',
+  `kls_mj` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Külsős szervezeti megjegyzések, pl. heti egyszer csütörtökönként szállít...'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -148,23 +151,24 @@ CREATE TABLE `telephely` (
   `th_irsz` int(10) NOT NULL COMMENT 'Telephely irányítószáma.',
   `th_v` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Telephely városa.',
   `th_cim` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Telephely címe.',
-  `th_gynev` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Telephely gyűjtőnév.'
+  `th_gynev` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Telephely gyűjtőnév.',
+  `th_mj` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Telephely megjegyzések.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `telephely`
 --
 
-INSERT INTO `telephely` (`th_ID`, `th_nev`, `th_irsz`, `th_v`, `th_cim`, `th_gynev`) VALUES
-(1, 'Népliget Center C épület', 1097, 'Budapest', 'Könyves Kálmán körút 11.', 'Központi létesítmény'),
-(2, 'HÉV telephely 1', 1163, 'Budapest', 'Nagyicce sor 2.', 'HÉV telephelyek'),
-(3, 'HÉV telephely 2', 1164, 'Budapest', 'Állomás tér 2.', 'HÉV telephelyek'),
-(4, 'HÉV telephely 3', 1212, 'Budapest', 'II. Rákóczi Ferenc út 174.', 'HÉV telephelyek'),
-(5, 'HÉV telephely 4', 1201, 'Budapest', 'Helsinki út 170196 hrsz.', 'HÉV telephelyek'),
-(6, 'HÉV fióktelep 1', 2000, 'Szentendre', 'Vasúti villasor 4.', 'HÉV fióktelepek'),
-(7, 'HÉV fióktelep 2', 2300, 'Ráckeve', 'Kossuth Lajos utca 117.', 'HÉV fióktelepek'),
-(8, 'HÉV fióktelep 3', 2330, 'Dunaharaszti', 'Fő út 1.', 'HÉV fióktelepek'),
-(9, 'HÉV fióktelep 4', 2011, 'Budakalász', 'Budakalász állomás 1236/13.', 'HÉV fióktelepek');
+INSERT INTO `telephely` (`th_ID`, `th_nev`, `th_irsz`, `th_v`, `th_cim`, `th_gynev`, `th_mj`) VALUES
+(1, 'Népliget Center C épület', 1097, 'Budapest', 'Könyves Kálmán körút 11.', 'Központi létesítmény', ''),
+(2, 'HÉV telephely 1', 1163, 'Budapest', 'Nagyicce sor 2.', 'HÉV telephelyek', ''),
+(3, 'HÉV telephely 2', 1164, 'Budapest', 'Állomás tér 2.', 'HÉV telephelyek', ''),
+(4, 'HÉV telephely 3', 1212, 'Budapest', 'II. Rákóczi Ferenc út 174.', 'HÉV telephelyek', ''),
+(5, 'HÉV telephely 4', 1201, 'Budapest', 'Helsinki út 170196 hrsz.', 'HÉV telephelyek', ''),
+(6, 'HÉV fióktelep 1', 2000, 'Szentendre', 'Vasúti villasor 4.', 'HÉV fióktelepek', ''),
+(7, 'HÉV fióktelep 2', 2300, 'Ráckeve', 'Kossuth Lajos utca 117.', 'HÉV fióktelepek', ''),
+(8, 'HÉV fióktelep 3', 2330, 'Dunaharaszti', 'Fő út 1.', 'HÉV fióktelepek', ''),
+(9, 'HÉV fióktelep 4', 2011, 'Budakalász', 'Budakalász állomás 1236/13.', 'HÉV fióktelepek', '');
 
 --
 -- Indexek a kiírt táblákhoz
