@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Már 02. 09:15
+-- Létrehozás ideje: 2022. Már 03. 09:44
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.11
 
@@ -45,7 +45,7 @@ CREATE TABLE `alkalmazott` (
   `alk_beoszt` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Alkalmazott beosztása.',
   `alk_vez` tinyint(1) NOT NULL COMMENT 'Vezető alkalmazott.',
   `alk_p` tinyint(1) NOT NULL COMMENT 'Portás alkalmazott.',
-  `alk_regido` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Alkalmazott regisztrációjának ideje.',
+  `alk_regido` datetime NOT NULL COMMENT 'Alkalmazott regisztrációjának ideje.',
   `alk_s` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Alkalmazotti státusz: fizetés nélkülin, táppénzen...',
   `alk_ki` tinyint(1) NOT NULL COMMENT 'Kilépett alkalmazott.',
   `alk_mj` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Egyéb megjegyzések, commentek.'
@@ -59,9 +59,10 @@ CREATE TABLE `alkalmazott` (
 
 DROP TABLE IF EXISTS `beki`;
 CREATE TABLE `beki` (
-  `alk_fnev` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Alkalmazott felhasználóneve.',
-  `alk_be` timestamp NULL DEFAULT NULL COMMENT 'Alkalmazotti belépés ideje.',
-  `alk_ki` timestamp NULL DEFAULT NULL COMMENT 'Alkalmazotti kilépés ideje.',
+  `beki_ID` int(255) NOT NULL,
+  `alk_fnev` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Alkalmazott felhasználóneve.	',
+  `alk_be` datetime NOT NULL COMMENT 'Alkalmazotti belépés ideje.',
+  `alk_ki` datetime NOT NULL COMMENT 'Alkalmazotti kilépés ideje.',
   `alk_ip` int(255) NOT NULL COMMENT 'Milyen ip címről lépett be?',
   `alk_ses` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Session - aktuális munkamenet.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
@@ -74,6 +75,7 @@ CREATE TABLE `beki` (
 
 DROP TABLE IF EXISTS `gjarmu`;
 CREATE TABLE `gjarmu` (
+  `g_ID` int(255) NOT NULL COMMENT 'Céges gépjármű azonosító.',
   `g_rsz` varchar(20) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű rendszáma.',
   `g_tip` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű típusa.',
   `g_mj` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű megjegyzések, pl. szervízben van...'
@@ -87,10 +89,12 @@ CREATE TABLE `gjarmu` (
 
 DROP TABLE IF EXISTS `gjarmu_km`;
 CREATE TABLE `gjarmu_km` (
-  `g_ID` int(255) NOT NULL COMMENT 'Gépjármű belépési azonosító.',
+  `g_km_ID` int(255) NOT NULL COMMENT 'Gépjármű belépési azonosító.',
   `g_rsz` varchar(20) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Céges gépjármű rendszáma.',
   `g_km_0` int(255) NOT NULL COMMENT 'Céges gépjármű km-óra állása felvételkor.',
+  `g_fel` datetime NOT NULL COMMENT 'Céges gépjármű felvételének ideje.',
   `g_km_1` int(255) NOT NULL COMMENT 'Céges gépjármű km-óra állása leadáskor.',
+  `g_le` datetime NOT NULL COMMENT 'Céges gépjármű leadásának ideje.',
   `alk_fnev` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Alkalmazott felhasználóneve.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
@@ -102,10 +106,10 @@ CREATE TABLE `gjarmu_km` (
 
 DROP TABLE IF EXISTS `kulcsfel`;
 CREATE TABLE `kulcsfel` (
+  `k_fel_ID` int(255) NOT NULL COMMENT 'Kulcs felvételének azonosítója.',
   `alk_fnev` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Alkalmazott felhasználóneve.',
-  `k_ID` int(50) NOT NULL COMMENT 'Kulcsazonosító.',
-  `k_ido_0` timestamp NULL DEFAULT NULL COMMENT 'Kulcs felvételének ideje.',
-  `k_ido_1` timestamp NULL DEFAULT NULL COMMENT 'Kulcs leadásának ideje.'
+  `k_ido_0` datetime NOT NULL COMMENT 'Kulcs felvételének ideje.',
+  `k_ido_1` datetime NOT NULL COMMENT 'Kulcs leadásának ideje.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -116,7 +120,7 @@ CREATE TABLE `kulcsfel` (
 
 DROP TABLE IF EXISTS `kulcsok`;
 CREATE TABLE `kulcsok` (
-  `k_ID` int(50) NOT NULL COMMENT 'Kulcsaznosító.',
+  `k_ID` int(255) NOT NULL COMMENT 'Kulcsaznosító.',
   `th_nev` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Telephely neve.',
   `k_leir` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Kulcs megnevezése, minek a kulcsa? Műhely, raktár...',
   `k_mj` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Kulccsal kapcsolatos megjegyzések, pl. elveszett, 3 példányos...'
@@ -130,11 +134,11 @@ CREATE TABLE `kulcsok` (
 
 DROP TABLE IF EXISTS `kulsos`;
 CREATE TABLE `kulsos` (
-  `kls_ID` int(50) NOT NULL COMMENT 'Külsős szervezeti azonosító.',
+  `kls_ID` int(255) NOT NULL COMMENT 'Külsős szervezeti azonosító.',
   `kls_sznev` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Külsős szervezet neve.',
   `kls_rsz` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Külsős szervezeti gépjármű rendszáma.',
-  `kls_be` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Külsős szervezeti gépjármű belépés.',
-  `kls_ki` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Külsős szervezeti gépjármű kilépés.',
+  `kls_be` datetime NOT NULL COMMENT 'Külsős szervezeti gépjármű belépés ideje.',
+  `kls_ki` datetime NOT NULL COMMENT 'Külsős szervezeti gépjármű kilépés ideje.',
   `kls_mj` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Külsős szervezeti megjegyzések, pl. heti egyszer csütörtökönként szállít...'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
@@ -146,7 +150,7 @@ CREATE TABLE `kulsos` (
 
 DROP TABLE IF EXISTS `telephely`;
 CREATE TABLE `telephely` (
-  `th_ID` int(50) NOT NULL COMMENT 'Telephely azonosító.',
+  `th_ID` int(255) NOT NULL COMMENT 'Telephely azonosító.',
   `th_nev` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Telephely neve.',
   `th_irsz` int(10) NOT NULL COMMENT 'Telephely irányítószáma.',
   `th_v` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL COMMENT 'Telephely városa.',
@@ -184,25 +188,25 @@ ALTER TABLE `alkalmazott`
 -- A tábla indexei `beki`
 --
 ALTER TABLE `beki`
-  ADD PRIMARY KEY (`alk_fnev`);
+  ADD PRIMARY KEY (`beki_ID`);
 
 --
 -- A tábla indexei `gjarmu`
 --
 ALTER TABLE `gjarmu`
-  ADD PRIMARY KEY (`g_rsz`);
+  ADD PRIMARY KEY (`g_ID`);
 
 --
 -- A tábla indexei `gjarmu_km`
 --
 ALTER TABLE `gjarmu_km`
-  ADD PRIMARY KEY (`g_ID`);
+  ADD PRIMARY KEY (`g_km_ID`);
 
 --
 -- A tábla indexei `kulcsfel`
 --
 ALTER TABLE `kulcsfel`
-  ADD PRIMARY KEY (`k_ID`);
+  ADD PRIMARY KEY (`k_fel_ID`);
 
 --
 -- A tábla indexei `kulcsok`
@@ -233,22 +237,34 @@ ALTER TABLE `alkalmazott`
   MODIFY `alk_ID` int(255) NOT NULL AUTO_INCREMENT COMMENT 'Alkalmazott (user) egyedi azonosítója.';
 
 --
+-- AUTO_INCREMENT a táblához `beki`
+--
+ALTER TABLE `beki`
+  MODIFY `beki_ID` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `gjarmu`
+--
+ALTER TABLE `gjarmu`
+  MODIFY `g_ID` int(255) NOT NULL AUTO_INCREMENT COMMENT 'Céges gépjármű azonosító.';
+
+--
 -- AUTO_INCREMENT a táblához `kulcsok`
 --
 ALTER TABLE `kulcsok`
-  MODIFY `k_ID` int(50) NOT NULL AUTO_INCREMENT COMMENT 'Kulcsaznosító.';
+  MODIFY `k_ID` int(255) NOT NULL AUTO_INCREMENT COMMENT 'Kulcsaznosító.';
 
 --
 -- AUTO_INCREMENT a táblához `kulsos`
 --
 ALTER TABLE `kulsos`
-  MODIFY `kls_ID` int(50) NOT NULL AUTO_INCREMENT COMMENT 'Külsős szervezeti azonosító.';
+  MODIFY `kls_ID` int(255) NOT NULL AUTO_INCREMENT COMMENT 'Külsős szervezeti azonosító.';
 
 --
 -- AUTO_INCREMENT a táblához `telephely`
 --
 ALTER TABLE `telephely`
-  MODIFY `th_ID` int(50) NOT NULL AUTO_INCREMENT COMMENT 'Telephely azonosító.', AUTO_INCREMENT=10;
+  MODIFY `th_ID` int(255) NOT NULL AUTO_INCREMENT COMMENT 'Telephely azonosító.', AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
