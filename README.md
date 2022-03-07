@@ -1,5 +1,7 @@
 # vizsgaremek---projektfeladat
+
 Szoftverfejlesztés és -tesztelés vizsgaremek - projektfeladat
+
 
 A vizsgázóknak minimum 2, maximum 3 fős fejlesztői csapatot alkotva kell a vizsgát megelőzően egy komplex szoftveralkalmazást lefejleszteniük. A szoftveralkalmazásnak az alábbi elvárásoknak kell megfelelni:
  - Életszerű, valódi problémára nyújt megoldást.
@@ -39,8 +41,6 @@ Szempont	                                                            pontszám
  - a szoftver bemutatása során a vizsgázó előadásának szakszerűsége, illetve az angol nyelvű kommunikáció minősége	/3 pont/
  - a csapatmunka megvalósítása /4 pont/
 
-Milyen témát célszerű kitalálni?
-Ha tanácstalan a témaválasztással kapcsolatban, vagy csak szeretne tájékozódni a szempontokról, érdemes lehet beleolvasnia a Záródolgozat című oldalba. Ez ugyan még a régi OKJ elvárásaira szabottak, de egyrészt sok tekintetben gondolatébresztő lehet, másrészt meglehetősen sok átfedés lelhető fel a régi és az új rendszer között.
 
 Asztali- és webes szoftverfejlesztés, adatbázis-kezelés - projektfeladat
 
@@ -58,6 +58,3 @@ Szempont	                                                     pontszám
  - reszponzív viselkedésű weboldal készítés és formázás	/10 pont/
  - backend programozás (adatbázis lekérdezést is végző, néhány végpontot tartalmazó REST API kiszolgáló létrehozása) /15 pont/
  - frontend programozás (HTML / CSS /JavaScript / REST API kliens) /15 pont/
-
-Milyen feladatok jöhetnek itt szóba?
-Ha kíváncsi rá, milyen jellegű feladatok szoktak szerepelni a gyakorlati tevékenységet igénylő vizsgarészeken, nézze6n szét a Gyakorlati vizsga című oldalon!
