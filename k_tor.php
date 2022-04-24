@@ -41,7 +41,7 @@
 			
 				<div></div>
 				
-				<div class="collapse navbar-collapse" id="navbarCollapse">										
+				<!-- <div class="collapse navbar-collapse" id="navbarCollapse">										
 					<div class="container-fluid">
 						<form action="k_tor.php" method="post">
 								<table class="table-responsive">
@@ -52,17 +52,28 @@
 									</tr>
 								</table>							
 						</form>
-					</div>					
-					<div class="navbar-nav">
-						<a href="k.php" class="nav-item nav-link">Vissza</a>
-					</div>					
-					<div class="navbar-nav ms-auto">              	
+					</div>	-->
+				
+					<div class="navbar-nav ms-auto">
+						<a href="alk.php" class="nav-item nav-link">Vissza</a>              	
 						<a href="logout.php" class="nav-item nav-link">Kilépés</a>
 					</div>
-				</div>	
+
+				<!-- </div>	-->
 
 			</div>
 		</nav>
+                
+                <div class="container-fluid table table-responsive">
+		<div class="container-fluid">
+			<form action="k_tor.php" method="post">
+				<div class="row-responsible">
+					<a>Kulcsazonosító:</a>
+					<a><input type="text" name="Keres_szoveg" /></a>
+					<a><input name="Keres" type="submit" value="Keres" /></a>
+				</div>
+			</form>
+		</div>
 
 		<div class="container-fluid table table-responsive">
 		<?php

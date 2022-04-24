@@ -56,21 +56,16 @@
 		</nav>
 
 		<div class="container g-0">
-
-			<div class="row">
-				<div class="col-sm-6 col-md-6 col-lg-6">
-					<br>
-					<img class="img-thumbnail" src="hev4.jpg" alt="">	
+              		<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3"></div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <br>
+					<img class="img-thumbnail" src="hev4.jpg" alt="">
 				</div>
-				
-				<div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="col-sm-3 col-md-3 col-lg-12"></div>
+				<div class="col-12 col-sm-12 col-lg-12 text-center">
 					<br>
-					<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fmavhev%2Fvideos%2F2946322778984876%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-				</div>
-				
-				<div class="col-sm-12 col-md-12 col-lg-12 text-center">
-					<br>
-					<p>A jellegzetes zöld vonatok kiemelkedő pontossággal, évente 70-80 millió utast szállítanak kora hajnaltól késő estig. A fővárosban és annak környékén több telephelyen, megközelítőleg <b>1200 kollégánk</b> azért dolgozik, hogy utasaink időben és biztonságban érjenek úti céljukhoz.</p>
+					<p>A jellegzetes zöld vonatok kiemelkedő pontossággal, évente 70-80 millió utast szállítanak kora hajnaltól késő estig. A fővárosban és annak környékén több telephelyen, megközelítőleg <a href="https://fb.watch/cpcqtnpkvE/"><b>1200 kollégánk</b></a> azért dolgozik, hogy utasaink időben és biztonságban érjenek úti céljukhoz.</p>
 					<hr>
 					<footer class="blockquote-footer">Forrás: https://www.mav-hev.hu/hu/bemutatkozas</footer>
 				</div>

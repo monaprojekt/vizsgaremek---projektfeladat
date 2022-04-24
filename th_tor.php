@@ -37,7 +37,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 			
-				<div class="container-fluid">
+				<!-- <div class="container-fluid">
 					<form action="th_tor.php" method="post">
 						<table class="table-responsive">
 							<tr>
@@ -47,7 +47,7 @@
 								</tr>
 							</table>							
 					</form>
-				</div>
+				</div> -->
 
 				<div class="navbar-nav ms-auto"> 
 					<a href="th.php" class="nav-item nav-link">Vissza</a>             	
@@ -56,6 +56,17 @@
 
 			</div>
 		</nav>
+                
+                <div class="container-fluid table table-responsive">
+		<div class="container-fluid">
+			<form action="th_tor.php" method="post">
+				<div class="row-responsible">
+					<a>Telephely-azonosító:</a>
+					<a><input type="text" name="Keres_szoveg" /></a>
+					<a><input name="Keres" type="submit" value="Keres" /></a>
+				</div>
+			</form>
+		</div>		
 
 		<div class="container-fluid table table-responsive">
 			<?php

@@ -38,30 +38,45 @@
 			
 				<div></div>
 				
-				<div class="collapse navbar-collapse" id="navbarCollapse">					
-										
+				<!-- <div class="collapse navbar-collapse" id="navbarCollapse">					
 					<div class="container-fluid">
 						<form action="alk_mod.php" method="post">
-								<table class="table-responsive">
-									<tr>
-										<td class="nav-item text-warning">Felhasznalónév:</td>
-										<td><input type="text" name="Keres_szoveg" /></td>
-										<td align="center"><input name="Keres" type="submit" value="Keres" /></td>
-									</tr>
-								</table>							
+							<div class="row-responsible">
+									<div class="col-6 col-sm-6  col-lg-4" class="nav-item">Felhasznalónév:</div>
+									<div class="col-6 col-sm-6  col-lg-4" class="nav-item"><input type="text" name="Keres_szoveg" /></div>
+									<div class="col-12 col-sm-12  col-lg-4" class="nav-item"><input name="Keres" type="submit" value="Keres" /></div>
+							</div>
+							<table class="table-responsive">
+								<tr>
+									<td class="nav-item text-warning">Felhasznalónév:</td>
+									<td><input type="text" name="Keres_szoveg" /></td>
+									<td align="center"><input name="Keres" type="submit" value="Keres" /></td>
+								</tr>
+							</table>							
 						</form>
-					</div>
-					
-					<div class="navbar-nav ms-auto">   
-						<a href="alk.php" class="nav-item nav-link">Vissza</a>           	
-						<a href="logout.php" class="nav-item nav-link">Kilépés</a>
-					</div>
+				</div>	  -->
+								
+				<div class="navbar-nav ms-auto">   
+					<a href="alk.php" class="nav-item nav-link">Vissza</a>           	
+					<a href="logout.php" class="nav-item nav-link">Kilépés</a>
+				</div>
 
-				</div>	
+				<!-- </div>	 -->
 
 			</div>
 		</nav>
 
+		<div class="container-fluid table table-responsive">
+		<div class="container-fluid">
+			<form action="alk_mod.php" method="post">
+				<div class="row-responsible">
+					<a>Felhasznalónév:</a>
+					<a><input type="text" name="Keres_szoveg" /></a>
+					<a><input name="Keres" type="submit" value="Keres" /></a>
+				</div>
+			</form>
+		</div>
+	
 		<div class="container-fluid table table-responsive">
 		<?php
 				
@@ -78,7 +93,7 @@
 										
 					if ($lekerdezes->num_rows)
 					{																				
-						echo '<table table-responsible border="1">';
+						echo '<table table-responsible >';
 							echo '<br>';
 							echo '<thead>';
 								echo ' <tr>';
@@ -144,8 +159,9 @@
 		?>
 		</div>
 		<br>
-						<div class="container-fluid">
-							<form action="alk_mod.php" method="post" class="row">
+		
+		<div class="table table-responsive">
+							<form action="alk_mod.php" method="post" class="row-flex">
 								<table class="table table-responsible" align="center" style="width: 35% !important";>
 									<tr>
 										<td>Felhasználónév:</td>
@@ -295,7 +311,8 @@
 						{
 							echo "Az alkalmazott adatai nem módosultak!";
 						}	
-					}else
+					}
+					else
 					{
 						echo "Az adatbázishoz történő kapcsolódás sikertelen. A módosítás nem ment végve!";
 					}

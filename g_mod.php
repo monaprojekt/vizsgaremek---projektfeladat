@@ -37,7 +37,7 @@
 			
 				<div></div>
 				
-				<div class="collapse navbar-collapse" id="navbarCollapse">					
+				<!--- <div class="collapse navbar-collapse" id="navbarCollapse">					
 										
 					<div class="container-fluid">
 						<form action="g_mod.php" method="post">
@@ -49,19 +49,30 @@
 									</tr>
 								</table>							
 						</form>
-					</div>
+					</div> -->
 										
 					<div class="navbar-nav ms-auto"> 
 						<a href="g.php" class="nav-item nav-link">Vissza</a>             	
 						<a href="logout.php" class="nav-item nav-link">Kilépés</a>
 					</div>
 
-				</div>	
+				<!--- </div>	-->
 
 			</div>
 		</nav>
 
-		<div class="container-fluid table table-responsive">
+                <div class="container-fluid table table-responsive">
+		<div class="container-fluid">
+			<form action="g_mod.php" method="post">
+				<div class="row-responsible">
+					<a>Rendszám:</a>
+					<a><input type="text" name="Keres_szoveg" /></a>
+					<a><input name="Keres" type="submit" value="Keres" /></a>
+				</div>
+			</form>
+		</div>
+               		
+                <div class="container-fluid table table-responsive">
 		<?php
 			
 			$_POST = str_replace("<" , "&lt;" , $_POST ) ;   // seciális karakter védelem "<?"-re
