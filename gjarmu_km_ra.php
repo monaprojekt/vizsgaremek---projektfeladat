@@ -1,6 +1,6 @@
 <?php
-	session_start();
-	require_once 'connect.php';
+    session_start();
+    require_once 'connect.php';
     header('Content-Type: application/json; charset=utf-8');
 
     if( !isset( $_GET['g_rsz'] )  ||  !isset( $_GET['g_km_0'] ) ||  !isset( $_GET['g_fel'] ) ||  !isset( $_GET['g_km_1'] ) ||  !isset( $_GET['g_le'] ) ||  !isset( $_GET['alk_fnev'] ))
@@ -9,7 +9,6 @@
     }
     else
     {
-
 		$g_rsz   = $_GET['g_rsz'] ;
 		$g_km_0   = $_GET['g_km_0'] ;
 		$g_fel   = $_GET['g_fel'] ;
@@ -28,15 +27,9 @@
 		}
 		else
 		{
-			$tomb = array( 'hiba' => "adatbázis beírás hiba" ,  'uzenet' => "Sikerestelen felvitel az adatbázisba." ) ;	
-		}
-			
-	}
-	
-	
-	
+			$tomb = array( 'hiba' => "adatbázis beírás hiba" ,  'uzenet' => "Sikertelen felvitel az adatbázisba." ) ;	
+		}			
+	}	
     $json = json_encode( $tomb , JSON_UNESCAPED_UNICODE ) ;
-
     print $json ;
-
 ?>

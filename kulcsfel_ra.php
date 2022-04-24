@@ -1,6 +1,6 @@
 <?php
-	session_start();
-	require_once 'connect.php';
+    session_start();
+    require_once 'connect.php';
     header('Content-Type: application/json; charset=utf-8');
 
     if( !isset( $_GET['k_ID'] )  ||  !isset( $_GET['alk_fnev'] ) ||  !isset( $_GET['k_ido_0'] ) ||  !isset( $_GET['k_ido_1'] ))
@@ -9,12 +9,10 @@
     }
     else
     {
-
 		$k_ID		= $_GET['k_ID'] ;
 		$alk_fnev 	= $_GET['alk_fnev'] ;
-		$k_ido_0	= $_GET['k_ido_0'] ;
-		$k_ido_1	= $_GET['k_ido_1'] ;
-		
+		$k_ido_0	        = $_GET['k_ido_0'] ;
+		$k_ido_1	        = $_GET['k_ido_1'] ;		
 		
 		if($db->query("
 											
@@ -27,15 +25,10 @@
 		}
 		else
 		{
-			$tomb = array( 'hiba' => "adatbázis beírás hiba" ,  'uzenet' => "Sikerestelen felvitel az adatbázisba." ) ;	
-		}
-			
-	}
-	
-	
+			$tomb = array( 'hiba' => "adatbázis beírás hiba" ,  'uzenet' => "Sikertelen felvitel az adatbázisba." ) ;	
+		}			
+	}	
 	
     $json = json_encode( $tomb , JSON_UNESCAPED_UNICODE ) ;
-
     print $json ;
-
 ?>

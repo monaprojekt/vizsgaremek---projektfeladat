@@ -1,0 +1,49 @@
+.btn-color{
+    background-color: #0e1c36;
+    color: #fff;    
+  }
+  
+  .profile-image-pic{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+  }
+    
+  .cardbody-color{
+    background-color: #ebf2fa;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+
+  hatter{
+    background-color: lightgreen;
+  }
+
+  kozep{
+  margin-top: auto;
+  margin-bottom: auto;
+  height: auto;
+  width: auto;
+  }
+
+  table, thead, tr, th, td{
+    border: 1px solid;
+    overflow-x:auto;
+    overflow-y:auto;  
+    border-style: 1 ;  
+  }
+
+  tr:hover{
+    background-color: lightyellow;
+  }
+
+div{
+    style="overflow-x:auto;"
+    display: inline;
+    vertical-aligne: middle;
+}
+
+
+ 
