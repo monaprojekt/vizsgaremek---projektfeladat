@@ -136,10 +136,6 @@
 										<td><input type="text" name="th_ID" value= <?php echo $sor['th_ID']; ?> disabled/> *</td>
 									</tr>
 									<tr>
-										<td>Törölt:</td>
-										<td><input type="text" name="th_t" value= <?php echo $sor['th_t']; ?> /> *</td>
-									</tr>
-									<tr>
 										<td>Telephely neve:</td>
 										<td><input type="text" name="th_nev" value= <?php echo '"'.$sor["th_nev"].'"'; ?> /> *</td>
 									</tr>
@@ -176,6 +172,10 @@
 		<?php
 								
 					}
+                          else
+					{
+						echo "Nincs találat!";
+					}
 							
 				}
 			
@@ -183,24 +183,30 @@
 		//	$_POST = str_replace("<" , "&lt;" , $_POST ) ;   // seciális karakter védelem "<?"-re
 			if(isset($_POST['update']))
 				{
-					
-					if($db->query("
-						UPDATE `telephely` 
-						SET `th_t`='".$_POST['th_t']."', `th_nev`='".$_POST['th_nev']."', `th_irsz`='".$_POST['th_irsz']."', `th_v`='".$_POST['th_v']."', `th_cim`='".$_POST['th_cim']."', `th_gynev`='".$_POST['th_gynev']."', `th_mj`='".$_POST['th_mj']."' 
-						WHERE `th_ID` = '".$_SESSION['th_mod_keres']."'
-						"))
+					if(!empty($_POST['th_nev']) && !empty($_POST['th_irsz']) && !empty($_POST['th_v']) && !empty($_POST['th_cim']) && !empty($_POST['th_gynev']))
 					{
-						if ($db->affected_rows)
+						if($db->query("
+							UPDATE `telephely` 
+							SET `th_nev`='".$_POST['th_nev']."', `th_irsz`='".$_POST['th_irsz']."', `th_v`='".$_POST['th_v']."', `th_cim`='".$_POST['th_cim']."', `th_gynev`='".$_POST['th_gynev']."', `th_mj`='".$_POST['th_mj']."' 
+							WHERE `th_ID` = '".$_SESSION['th_mod_keres']."'
+							"))
 						{
-							echo "A telephely adatainak módosítása megtörtént!";
+							if ($db->affected_rows)
+							{
+								echo "A telephely adatainak módosítása megtörtént!";
+							}
+							else
+							{
+								echo "A telephely adatai nem módosultak!";
+							}	
+						}else
+						{
+							echo "Az adatbázishoz történő kapcsolódás sikertelen. A módosítás nem ment végve!";
 						}
-						else
-						{
-							echo "A telephely adatai nem módosultak!";
-						}	
-					}else
+					}
+					else
 					{
-						echo "Az adatbázishoz történő kapcsolódás sikertelen. A módosítás nem ment végve!";
+						echo ('Hibás kitöltés!');
 					}
 				}
 						

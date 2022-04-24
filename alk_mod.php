@@ -151,6 +151,8 @@
 																																			
 									echo '</tr>';
 								}
+                                      
+
 
 							echo '</tbody>';
 
@@ -181,12 +183,12 @@
 										?>
 										<td>Jog:</td>
 										<td>
-											<select name="jog_ID" size="1">
+											<select name="jog_ID" size="1"> *
 												<?php 
 													foreach($lekerdezesjog as $sorjog)
 													{
 														?>
-															<option	value=" <?php echo $sorjog['jog_ID'] ?> "
+															<option	value=" <?php echo $sorjog['jog_ID']; ?> "
 																				<?php
 																					if($sor['jog_ID'] == $sorjog['jog_ID'])
 																					{
@@ -201,12 +203,35 @@
 									        	<?php
 													}
 												 ?>
-											</select>
+											</select> *
 										</td>
 									</tr>
 									<tr>
 										<td>Jog státusz:</td>
-										<td><input type="text" name="jog_s" value= <?php echo '"'.$sor['jog_s'].'"'; ?> /> *</td>
+										<td>
+											<select name="jog_s" size="1">
+												<option 
+													value="0"
+													<?php
+														if($sor['jog_s'] == "0" )
+														{
+															echo " selected";
+														}
+													?>
+													>Nem aktív
+												</option>
+												<option 
+													value="1"
+													<?php
+														if($sor['jog_s'] == "1" )
+														{
+															echo " selected";
+														}
+													?>
+													>Aktív
+												</option>
+											</select> *
+										</td>
 									</tr>
 									<tr>
 										<td>Adóazonosító jel:</td>
@@ -281,6 +306,10 @@
 		<div class="container-fluid table table-responsible">		
 		<?php								
 					}
+                          else
+					{
+						echo "Nincs találat!";
+					}
 									
 				}
 		
@@ -288,33 +317,42 @@
 			$_POST = str_replace("<" , "&lt;" , $_POST ) ;   // seciális karakter védelem "<?"-re
 			if(isset($_POST['update']))
 				{
-					if(strlen($_POST['alk_pw1'])>6 && $_POST['alk_pw1'] == $_POST['alk_pw2'])
-					{
-						$pwstr = "`alk_pw`="."'".md5($_POST['alk_pw1'])."',";
-					}
-					else
-					{
-						$pwstr = "";
-					}
+					if(!empty($_POST['jog_ID']) && !empty($_POST['alk_aj']) && !empty($_POST['alk_nev']) && !empty($_POST['alk_jv_0']) && !empty($_POST['alk_szhely']) && !empty($_POST['alk_szido']) && !empty($_POST['alk_mail']) && !empty($_POST['alk_tel']) && !empty($_POST['alk_beoszt']) && $_POST['alk_vez']<>"" && $_POST['alk_p']<>"" && !empty($_POST['alk_s']))
+					{	
 					
-					if($db->query("
-					UPDATE `alkalmazott` 
-					SET $pwstr `jog_ID`='".$_POST['jog_ID']."', `jog_s`='".$_POST['jog_s']."', `alk_aj`='".$_POST['alk_aj']."', `alk_nev0`='".$_POST['alk_nev0']."', `alk_nev`='".$_POST['alk_nev']."', `alk_jv_0`='".$_POST['alk_jv_0']."', `alk_jv_1`='".$_POST['alk_jv_1']."', `alk_szhely`='".$_POST['alk_szhely']."', `alk_szido`='".$_POST['alk_szido']."', `alk_mail`='".$_POST['alk_mail']."', `alk_tel`='".$_POST['alk_tel']."', `alk_beoszt`='".$_POST['alk_beoszt']."', `alk_vez`='".$_POST['alk_vez']."', `alk_p`='".$_POST['alk_p']."', `alk_s`='".$_POST['alk_s']."', `alk_mj`='".$_POST['alk_mj']."' 
-					WHERE `alk_fnev` = '".$_SESSION['alk_mod_keres']."'
-					"))
-					{
-						if($db->affected_rows)
+						if(strlen($_POST['alk_pw1'])>6 && $_POST['alk_pw1'] == $_POST['alk_pw2'])
 						{
-							echo "Az alkalmazott adatainak módosítása megtörtént!";
+							$pwstr = "`alk_pw`="."'".md5($_POST['alk_pw1'])."',";
 						}
 						else
 						{
-							echo "Az alkalmazott adatai nem módosultak!";
-						}	
+							$pwstr = "";
+						}
+						
+						if($db->query("
+						UPDATE `alkalmazott` 
+						SET $pwstr `jog_ID`='".$_POST['jog_ID']."', `jog_s`='".$_POST['jog_s']."', `alk_aj`='".$_POST['alk_aj']."', `alk_nev0`='".$_POST['alk_nev0']."', `alk_nev`='".$_POST['alk_nev']."', `alk_jv_0`='".$_POST['alk_jv_0']."', `alk_jv_1`='".$_POST['alk_jv_1']."', `alk_szhely`='".$_POST['alk_szhely']."', `alk_szido`='".$_POST['alk_szido']."', `alk_mail`='".$_POST['alk_mail']."', `alk_tel`='".$_POST['alk_tel']."', `alk_beoszt`='".$_POST['alk_beoszt']."', `alk_vez`='".$_POST['alk_vez']."', `alk_p`='".$_POST['alk_p']."', `alk_s`='".$_POST['alk_s']."', `alk_mj`='".$_POST['alk_mj']."' 
+						WHERE `alk_fnev` = '".$_SESSION['alk_mod_keres']."'
+						"))
+						{
+							if($db->affected_rows)
+							{
+								echo "Az alkalmazott adatainak módosítása megtörtént!";
+							}
+							else
+							{
+								echo "Az alkalmazott adatai nem módosultak!";
+							}	
+						}
+						else
+						{
+							echo "Az adatbázishoz történő kapcsolódás sikertelen. A módosítás nem ment végve!";
+						}
 					}
 					else
 					{
-						echo "Az adatbázishoz történő kapcsolódás sikertelen. A módosítás nem ment végve!";
+						echo ('Hibás kitöltés!');
+						
 					}
 				}
 						

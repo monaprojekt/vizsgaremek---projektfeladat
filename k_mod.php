@@ -164,10 +164,6 @@
 										<td><input type="text" name="k_leir" value= <?php echo '"'.$sor['k_leir'].'"'; ?> /> *</td>
 									</tr>
 									<tr>
-										<td>Törölt:</td>
-										<td><input type="text" name="k_t" value= <?php echo '"'.$sor['k_t'].'"'; ?> /> *</td>
-									</tr>
-									<tr>
 										<td>Megjegyzés:</td>
 										<td><input type="text" name="k_mj" value= <?php echo '"'.$sor['k_mj'].'"'; ?> /></td>
 									</tr>
@@ -179,6 +175,10 @@
 						</div>
 						<div class="container-fluid table table-responsible">		
 		<?php
+					}
+                          else
+					{
+						echo "Nincs találat!";
 					}									
 				}
 		
@@ -189,24 +189,31 @@
 			$_POST = str_replace("<" , "&lt;" , $_POST ) ;   // seciális karakter védelem "<?"-re
 			if(isset($_POST['update']))
 				{
-					if($db->query("
-					UPDATE `kulcsok` 
-					SET  `th_ID`='".$_POST['th_ID']."', `k_leir`='".$_POST['k_leir']."', `k_t`='".$_POST['k_t']."', `k_mj`='".$_POST['k_mj']."'
-					WHERE `k_ID` = '".$_SESSION['k_mod_keres']."'
-					"))
+					if(!empty($_POST['k_leir']))
 					{
-						if($db->affected_rows)
+						if($db->query("
+						UPDATE `kulcsok` 
+						SET  `th_ID`='".$_POST['th_ID']."', `k_leir`='".$_POST['k_leir']."', `k_mj`='".$_POST['k_mj']."'
+						WHERE `k_ID` = '".$_SESSION['k_mod_keres']."'
+						"))
 						{
-							echo "A kulcs  adatainak módosítása megtörtént!";
+							if($db->affected_rows)
+							{
+								echo "A kulcs  adatainak módosítása megtörtént!";
+							}
+							else
+							{
+								echo "A kulcs adatai nem módosultak!";
+							}	
 						}
 						else
 						{
-							echo "A kulcs adatai nem módosultak!";
-						}	
+							echo "Az adatbázishoz történő kapcsolódás sikertelen. A módosítás nem ment végve!";
+						}
 					}
 					else
 					{
-						echo "Az adatbázishoz történő kapcsolódás sikertelen. A módosítás nem ment végve!";
+						echo ('Hibás kitöltés!');
 					}
 				}
 						

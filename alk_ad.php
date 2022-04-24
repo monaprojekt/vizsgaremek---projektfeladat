@@ -230,7 +230,7 @@
 								<?php foreach($lekerdezesjog as $sorjog){?>
 								<option value="<?php echo $sorjog['jog_ID'] ?>"><?php echo $sorjog['jog_nev'] ?></option>
 								<?php } ?>
-							</select>
+							</select> *
 						</td>
 					</tr>
 					<tr>
@@ -239,7 +239,7 @@
 							<select name="jog_s" size="1">
 								<option value="1">Aktív</option>
 								<option value="0">Nem aktív</option>
-							</select>
+							</select> *
 						</td>
 					</tr>
 					<tr>

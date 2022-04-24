@@ -143,13 +143,6 @@
 										<td>Státusz:</td>
 										<td><input type="text" name="g_s" value= <?php echo '"'.$sor['g_s'].'"'; ?> /></td>
 									</tr>
-									</tr>
-										<td>Törölt:</td>
-											<td>
-											<input type="radio" name="g_t" value="1" <?php  if($sor['g_t']){echo "checked";} ?>/> Igen 
-											<input type="radio" name="g_t" value="0" <?php  if(!$sor['g_t']){echo "checked";} ?>/> Nem *
-											</td>
-									</tr>
 									<tr>
 										<td>Megjegyzés:</td>
 										<td><input type="text" name="g_mj" value= <?php echo '"'.$sor['g_mj'].'"'; ?> /></td>
@@ -167,6 +160,10 @@
 		<?php
 								
 					}
+                          else
+					{
+						echo "Nincs találat!";
+					}
 							
 				}
 			
@@ -174,21 +171,27 @@
 			$_POST = str_replace("<" , "&lt;" , $_POST ) ;   // seciális karakter védelem "<?"-re
 			if(isset($_POST['update']))
 				{
-					
-					if($db->query("UPDATE `gjarmu` SET `g_feng`='".$_POST['g_feng']."', `g_tip`='".$_POST['g_tip']."', `g_s`='".$_POST['g_s']."', `g_t`='".$_POST['g_t']."', `g_mj`='".$_POST['g_mj']."' WHERE `g_rsz` = '".$_SESSION['g_rsz_mod_keres']."'"))
+					if(!empty($_POST['g_feng']) && !empty($_POST['g_tip']))
 					{
-						if ($db->affected_rows)
+						if($db->query("UPDATE `gjarmu` SET `g_feng`='".$_POST['g_feng']."', `g_tip`='".$_POST['g_tip']."', `g_s`='".$_POST['g_s']."', `g_mj`='".$_POST['g_mj']."' WHERE `g_rsz` = '".$_SESSION['g_rsz_mod_keres']."'"))
 						{
-							echo "A gépjármű adatainak módosítása megtörtént!";
+							if ($db->affected_rows)
+							{
+								echo "A gépjármű adatainak módosítása megtörtént!";
+							}
+							else
+							{
+								echo "A gépjármű adatai nem módosultak!";
+							}	
 						}
-						else
+											else
 						{
-							echo "A gépjármű adatai nem módosultak!";
-						}	
+							echo "Az adatbázishoz történő kapcsolódás sikertelen. A módosítás nem ment végve!";
+						}
 					}
-                                        else
+					else
 					{
-						echo "Az adatbázishoz történő kapcsolódás sikertelen. A módosítás nem ment végve!";
+						echo ('Hibás kitöltés!');
 					}
 				}
 						
