@@ -13,6 +13,7 @@ Szerver által kezelt táblák:
     
 Elérhető: https://monasoft.hu/
 
+----
 
 Feladatkiírás: szoftverfejlesztés és -tesztelés vizsgaremek - projektfeladat
 
