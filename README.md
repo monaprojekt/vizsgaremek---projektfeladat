@@ -1,4 +1,20 @@
 # vizsgaremek---projektfeladat
+
+A Porta adminisztrációs rendszer egy olyan online felület, mely mintaképpen egy tesztvállalat, jelen esetben a MÁV-HÉV Zrt. (továbbiakban Zrt.) alkalmazottai, az alkalmazottak jogai, belépésük-kilépésük, a Zrt. telephelyei, gépjárművei, kulcsai, azok felvétele, leadása naprakész nyilvántartásának vezetésére szolgál az adatok online archiválásának lehetőségével. Telepítés nélkül elérhető webes szerver felület, melynek használata könnyen betanítható és megtanulható.
+Elsősorban olyan vállalatok, vállalkozások számára ajánlott, mely több telephelyen, nagy eszközparkkal, közel vagy több száz alkalmazottat foglalkoztat, kiknek mozgását mindenképp rögzíteni szükséges a lehető legegyszerűbb, legkevésbé eszközigényes módon.
+
+Szerver által kezelt táblák:
+    - alkalmazott
+    - jogok
+    - kulcsok
+    - telephely
+    - szerver admin ki-belépének rögzítéséhez: beki
+    - gjarmu
+    
+Elérhető: https://monasoft.hu/
+
+----
+
 Szoftverfejlesztés és -tesztelés vizsgaremek - projektfeladat
 
 A vizsgázóknak minimum 2, maximum 3 fős fejlesztői csapatot alkotva kell a vizsgát megelőzően egy komplex szoftveralkalmazást lefejleszteniük. A szoftveralkalmazásnak az alábbi elvárásoknak kell megfelelni:
